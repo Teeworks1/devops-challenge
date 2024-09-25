@@ -10,7 +10,7 @@ COPY . .
 
 RUN go build -o api .
 
-FROM alpine:3.18
+FROM alpine:3.20.3
 
 WORKDIR /app
 
