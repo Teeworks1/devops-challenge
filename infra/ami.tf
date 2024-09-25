@@ -1,7 +1,7 @@
 #data source for the AMI
 data "aws_ami" "ubuntu" {
-  most_recent      = true
-  owners           = ["amazon"]
+  most_recent = true
+  owners      = ["amazon"]
 
   filter {
     name   = "name"
@@ -19,7 +19,7 @@ data "aws_ami" "ubuntu" {
   }
 
   filter {
-    name  = "architecture"
-    values =  ["x86_64"]
+    name   = "architecture"
+    values = ["x86_64"]
   }
 }

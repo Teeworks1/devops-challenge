@@ -17,8 +17,8 @@ resource "aws_security_group" "bastion-instance" {
       protocol    = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
     }
-  } 
-   dynamic "egress" {
+  }
+  dynamic "egress" {
     iterator = port
     for_each = local.ports
     content {
@@ -28,6 +28,6 @@ resource "aws_security_group" "bastion-instance" {
       protocol    = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
     }
-  } 
-   
+  }
+
 }

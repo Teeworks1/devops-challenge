@@ -5,9 +5,9 @@ resource "aws_key_pair" "deployer" {
 
 resource "tls_private_key" "ed25519-example" {
   algorithm = "RSA"
-  rsa_bits =4096
+  rsa_bits  = 4096
 }
 resource "local_file" "TF-key" {
-  content = tls_private_key.ed25519-example.private_key_pem
-  filename =  "deployer-key.pem"  
+  content  = tls_private_key.ed25519-example.private_key_pem
+  filename = "deployer-key.pem"
 }
