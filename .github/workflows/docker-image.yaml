@@ -47,9 +47,3 @@ jobs:
         IMAGE_NAME=$(basename "$PWD")
         ECR_URI=891376975226.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_NAME
         docker push $ECR_URI:latest
-
-    - name: Push the Docker image to ECR
-      run: |
-        IMAGE_NAME=$(basename "$PWD")
-        ECR_URI=891376975226.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_NAME
-        docker push $ECR_URI:latest
