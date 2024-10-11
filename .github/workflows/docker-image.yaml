@@ -20,5 +20,5 @@ jobs:
     - name: Testing workflow
       run: echo "workflow works!"
 
-    # Step 1: Log in to Amazon ECR
+     ##tep 1: Log in to Amazon ECR
    
