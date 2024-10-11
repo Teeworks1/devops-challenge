@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-
+  
   build-and-push:
     runs-on: ubuntu-latest
     permissions:
@@ -17,9 +17,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Testing workflow
+      run: echo "workflow works!"
+
     # Step 1: Log in to Amazon ECR
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
+      uses: aws-actions/configure-aws-credentials@v3
       with:
         role-to-assume: arn:aws:iam::891376975226:role/OIDCRolefors3  
         aws-region: us-east-1
