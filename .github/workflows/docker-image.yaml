@@ -15,10 +15,13 @@ jobs:
       contents: read
       
     steps:
-    - uses: actions/checkout@v4
-
     - name: Testing workflow
-      run: echo "workflow works!"
+      uses: actions/checkout@v4
 
-     ##tep 1: Log in to Amazon ECR
+    - name: Maven test
+      run: mvn test
+    
+    - name: Checkstyle
+      run: mvn checkstyle:checkstyle
+     
    
