@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-
+  
   build-and-push:
     runs-on: ubuntu-latest
     permissions:
@@ -15,35 +15,21 @@ jobs:
       contents: read
       
     steps:
-    - uses: actions/checkout@v4
+    - name: Testing workflow
+      uses: actions/checkout@v4
 
-    # Step 1: Log in to Amazon ECR
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
-      with:
-        role-to-assume: arn:aws:iam::891376975226:role/OIDCRolefors3  
-        aws-region: us-east-1
-
-    - name: Login to Amazon ECR
-      run: |
-        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 891376975226.dkr.ecr.us-east-1.amazonaws.com
-
-    # Step 2: Build the Docker image
-    - name: Build the Docker image
-      run: |
-        IMAGE_NAME=$(basename "$PWD")
-        docker build . --file Dockerfile --tag $IMAGE_NAME:latest
-
-    # Step 3: Tag the image with ECR repository URL
-    - name: Tag the Docker image
-      run: |
-        IMAGE_NAME=$(basename "$PWD")
-        ECR_URI=891376975226.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_NAME
-        docker tag $IMAGE_NAME:latest $ECR_URI:latest
-
-    # Step 4: Push the Docker image to ECR
-    - name: Push the Docker image to ECR
-      run: |
-        IMAGE_NAME=$(basename "$PWD")
-        ECR_URI=891376975226.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_NAME
-        docker push $ECR_URI:latest
+    # - name: Maven test
+    #   run: mvn test
+    
+    # - name: Checkstyle
+    #   run: mvn checkstyle:checkstyle
+     
+    # - name: Set Java 11
+    #   uses: actions/setup-java@v3
+    #   with:
+    #     distribution: "temurin"
+    #     java-version: "11"
+    # - name: Setup Sonarqube
+    #   uses: warchant/setup-sonar-scanner@v7
+    # - name: Sonarqube scan
+    #   run:
